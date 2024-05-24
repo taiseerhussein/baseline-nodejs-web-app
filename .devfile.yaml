@@ -9,7 +9,7 @@ components:
         - exposure: public
           name: nodejs
           protocol: https
-          targetPort: 3000
+          targetPort: 8080
       memoryLimit: '1Gi'
       memoryRequest: '512Mi'
       cpuLimit: '0.5'
@@ -26,7 +26,7 @@ commands:
     exec:
       label: "Download dependencies"
       component: tools
-      workingDir: ${PROJECTS_ROOT}/web-nodejs-sample/app
+      workingDir: ${PROJECTS_ROOT}/baseline-nodejs-web-app/app
       commandLine: "npm install"
       group:
         kind: build
@@ -34,7 +34,7 @@ commands:
     exec:
       label: "Run the web app"
       component: tools
-      workingDir: ${PROJECTS_ROOT}/web-nodejs-sample/app
+      workingDir: ${PROJECTS_ROOT}/baseline-nodejs-web-app/app
       commandLine: "nodemon app.js"
       group:
         kind: run
@@ -42,7 +42,7 @@ commands:
     exec:
       label: "Run the web app (and download dependencies)"
       component: tools
-      workingDir: ${PROJECTS_ROOT}/web-nodejs-sample/app
+      workingDir: ${PROJECTS_ROOT}/baseline-nodejs-web-app/app
       commandLine: "npm install; nodemon app.js"
       group:
         kind: run
@@ -50,7 +50,7 @@ commands:
     exec:
       label: "Run the web app (debugging enabled)"
       component: tools
-      workingDir: ${PROJECTS_ROOT}/web-nodejs-sample/app
+      workingDir: ${PROJECTS_ROOT}/baseline-nodejs-web-app/app
       commandLine: "nodemon --inspect app.js"
       group:
         kind: debug
